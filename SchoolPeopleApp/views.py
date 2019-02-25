@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import School
+from .models import School, People
 
 
 # Create your views here.
-def index(request):
+def indexForSchool(request):
     allSchools = School.objects.all()
 
     context = {
@@ -35,3 +35,22 @@ def addStudentToSchool(request, schoolID):
     }
 
     return render(request, 'SchoolPeopleApp/index.html', context)
+
+
+def index(request):
+    allPeople = People.objects.all()
+    context = {
+        'allPeople': allPeople
+    }
+    return render(request, 'SchoolPeopleApp/peopleIndex.html', context)
+
+
+def helloPerson(request):
+    return HttpResponse("Hello " + request.POST["personName"])
+
+
+def addAStar(request, personID):
+    individualPerson = get_object_or_404(People, pk=personID)
+    individualPerson.name += "*"
+    individualPerson.save()
+    return redirect("index")

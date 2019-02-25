@@ -17,3 +17,6 @@ class People(models.Model):
     name = models.CharField(max_length=200, default="")
     age = models.DecimalField(decimal_places=3, max_digits=7)
     dob = models.DateTimeField(default=timezone.now())
+
+    def __str__(self):
+        return self.name

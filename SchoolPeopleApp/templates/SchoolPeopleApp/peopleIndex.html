@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="{% url 'helloPerson' %}" method="post">
+    {% csrf_token %}
+
+    {% for eachPerson in allPeople %}
+        <p>Name: {{ eachPerson.name }} <a href="{% url 'addAStar' eachPerson.id %}">Add a star</a></p>
+    {% endfor %}
+
+    <input type="text" name="personName">
+    <button>Submit</button>
+</form>
+
+</body>
+</html>
