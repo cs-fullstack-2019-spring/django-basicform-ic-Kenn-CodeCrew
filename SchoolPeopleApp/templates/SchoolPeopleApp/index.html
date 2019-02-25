@@ -8,9 +8,14 @@
 
 <h1>Here are all the schools</h1>
 
-{% for eachSchool in allSchool %}
-    <p>{{ eachSchool.name }}</p>
-{% endfor %}
+<form action="{% url 'printStudent' %}" method="post">
+    {% csrf_token %}
+    {% for eachSchool in allSchool %}
+        <p>{{ eachSchool.name }}</p>
+    {% endfor %}
 
+<input type="text" name="studentName">
+<button>Submit</button>
+</form>
 </body>
 </html>

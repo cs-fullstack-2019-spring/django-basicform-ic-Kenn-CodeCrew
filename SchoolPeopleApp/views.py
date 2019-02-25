@@ -13,3 +13,7 @@ def index(request):
 
     return render(request, 'SchoolPeopleApp/index.html', context)
     # return HttpResponse("Test URL I hope this works")
+
+
+def printStudent(request):
+    return HttpResponse("Test URL")
