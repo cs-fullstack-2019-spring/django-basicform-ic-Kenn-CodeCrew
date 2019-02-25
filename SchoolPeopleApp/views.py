@@ -24,6 +24,7 @@ def printStudent(request):
 
 def addStudentToSchool(request, schoolID):
     individualSchool = get_object_or_404(School, pk=schoolID)
+    # individualSchool = School.objects.get(pk = schoolID)
     individualSchool.students += 1
     individualSchool.save()
 

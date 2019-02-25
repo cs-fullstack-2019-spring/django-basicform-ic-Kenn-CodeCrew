@@ -11,7 +11,7 @@
 <form action="{% url 'printStudent' %}" method="post">
     {% csrf_token %}
     {% for eachSchool in allSchool %}
-        <p>{{ eachSchool.name }} with {{ eachSchool.students}} id{{ eachSchool.id }}<a href="{% url 'addStudentToSchool' eachSchool.id %} ">Add</a></p>
+        <p>{{ eachSchool.name }} with {{ eachSchool.students}} students id{{ eachSchool.id }}<a href="{% url 'addStudentToSchool' eachSchool.id %} ">Add</a></p>
     {% endfor %}
 
 <input type="text" name="studentName">
