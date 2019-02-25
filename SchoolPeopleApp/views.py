@@ -16,4 +16,5 @@ def index(request):
 
 
 def printStudent(request):
+    print(request.POST["studentName"])
     return HttpResponse("Test URL")
