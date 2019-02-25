@@ -9,6 +9,9 @@ class School(models.Model):
     students = models.IntegerField(default=0)
     dateOpened = models.DateField(default="")
 
+    def __str__(self):
+        return self.name
+
 
 class People(models.Model):
     name = models.CharField(max_length=200, default="")
