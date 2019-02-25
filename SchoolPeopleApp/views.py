@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import School
 
@@ -16,5 +16,21 @@ def index(request):
 
 
 def printStudent(request):
+    print(request.POST)
     print(request.POST["studentName"])
-    return HttpResponse("Test URL")
+    print(request.POST["studentAge"])
+    return HttpResponse("Hello " + request.POST["studentName"])
+
+
+def addStudentToSchool(request, schoolID):
+    individualSchool = get_object_or_404(School, pk=schoolID)
+    individualSchool.students += 1
+    individualSchool.save()
+
+    allSchools = School.objects.all()
+
+    context = {
+        "allSchool": allSchools
+    }
+
+    return render(request, 'SchoolPeopleApp/index.html', context)
